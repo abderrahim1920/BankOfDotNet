@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  db :
+    environment:
+     - SA_PASSWORD=Clubiste1920
+     - ACCEPT_EULA=Y
+    ports:
+     - "1433:1433"
+  bankofdotnet.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - connectionString=Server=db;Database=IdentityServer4DB;User Id=sa;Password=Clubiste1920
+    ports:
+      - "80"
+
+  bankofdotnet.identity:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - connectionString=Server=db;Database=IdentityServer4DB;User Id=sa;Password=Clubiste1920
+    ports:
+      - "80"
+

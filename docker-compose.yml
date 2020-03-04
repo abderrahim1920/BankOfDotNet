@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04"
+    ports:
+     - "1433:1433"
+    environment:
+     SA_PASSWORD: "Clubiste1920"
+     ACCEPT_EULA: "Y"
+    
+  bankofdotnet.api:
+    image: ${DOCKER_REGISTRY-}bankofdotnetapi
+    build:
+      context: .
+      dockerfile: BankOfDotNet.API/Dockerfile
+    depends_on :
+     - db
+
+  bankofdotnet.identity:
+    image: ${DOCKER_REGISTRY-}bankofdotnetidentity
+    build:
+      context: .
+      dockerfile: BankOfDotNet.Identity/Dockerfile
+    depends_on :
+     - db
+
