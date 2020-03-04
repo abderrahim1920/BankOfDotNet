@@ -34,6 +34,9 @@ namespace BankOfDotNet.Identity
         {
             services.AddMvc();
 
+            //add comment
+            //add comment
+
             //var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
             //    .AddJsonFile("appSettings.json", false)
             //    .Build();
